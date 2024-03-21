@@ -36,7 +36,7 @@ func GetSongs(response http.ResponseWriter, request *http.Request) {
 
     client := global.GetClient()
 
-    rows, err := client.Query("SELECT song_id, title FROM songs")
+    rows, err := client.Query("SELECT * FROM songs")
     defer rows.Close()
 
     if err != nil {
@@ -47,7 +47,7 @@ func GetSongs(response http.ResponseWriter, request *http.Request) {
 
     for rows.Next() {
         var song global.Song 
-        err := rows.Scan(&song.Title, &song.Artist, &song.Album, &song.ReleaseYear, &song.Genre, &song.DurationSeconds) 
+        err := rows.Scan(&song.Id, &song.Title, &song.Artist, &song.Album, &song.ReleaseYear, &song.Genre, &song.DurationSeconds) 
         if err != nil { 
             log.Fatal(err) 
         }

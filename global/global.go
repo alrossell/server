@@ -18,9 +18,6 @@ type Song struct {
     DurationSeconds int
 }
 
-const DataBase = "myDatabase"
-const Collection = "myCollection"
-
 var client *sql.DB
 
 func CreateClient() {

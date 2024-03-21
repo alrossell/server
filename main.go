@@ -42,6 +42,9 @@ func main() {
     apiRouter.HandleFunc("/songs", api.GetSongs).Methods("GET", "OPTIONS")    // Include OPTIONS to handle preflight requests
     apiRouter.HandleFunc("/songs/{id}", api.DeleteSong).Methods("DELETE", "OPTIONS") // Include OPTIONS to handle preflight requests
     apiRouter.HandleFunc("/songs", api.DeleteAllSongs).Methods("DELETE", "OPTIONS") // Include OPTIONS to handle preflight requests
+    apiRouter.HandleFunc("/songs", api.DeleteAllSongs).Methods("DELETE", "OPTIONS") // Include OPTIONS to handle preflight requests
+   
+    apiRouter.HandleFunc("/songs", api.GetSearchResults).Methods("GET", "OPTIONS")    // Include OPTIONS to handle preflight requests
 
     http.ListenAndServe(":5000", router)
 }
