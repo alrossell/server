@@ -7,15 +7,27 @@ import (
     _ "github.com/lib/pq"
 )
 
+type Review struct {
+    Id int `json:"id"`
+    UserId int `json:"user_id"` 
+    SongId int `json:"song_id"`
+    Date string `json:"date"`
+    Review string `json:"review"`
+}
 
 type Song struct {
-    Id int
-    Title string 
-    Artist string
-    Album string
-    ReleaseYear int
-    Genre string
-    DurationSeconds int
+    Id int `json:"id"`
+    Title string `json:"title"`
+    Artist string `json:"artist"`
+    Album string `json:"album"`
+    ReleaseYear int `json:"release_year"`
+    Genre string `json:"genre"`
+    DurationSeconds int `json:"duration_seconds"`
+}
+
+type Test struct {
+    id, releaseYear, durationSeconds int
+    title, artist, album, genre string
 }
 
 var client *sql.DB

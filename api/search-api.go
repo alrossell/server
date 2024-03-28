@@ -1,4 +1,3 @@
-
 package api 
 
 import (
@@ -12,12 +11,12 @@ import (
     _ "github.com/lib/pq"
 )
 
-
 func GetSearchResults(response http.ResponseWriter, request *http.Request) {
-    fmt.Println("Getting all songs")
+    fmt.Println("GetSearchResults called")
 
     queryValues := request.URL.Query()
     searchQuery := queryValues.Get("query") // Assuming the query parameter is named 'query'
+    _ = searchQuery
 
     client := global.GetClient()
 
@@ -38,13 +37,12 @@ func GetSearchResults(response http.ResponseWriter, request *http.Request) {
             log.Fatal(err) 
         }
 
-        if song.Title == searchQuery || song.Artist == searchQuery || song.Album == searchQuery || song.Genre == searchQuery {
-            songs = append(songs, song)
-        }
+        songs = append(songs, song)
+        // if song.Title == searchQuery || song.Artist == searchQuery || song.Album == searchQuery || song.Genre == searchQuery {
+        //     songs = append(songs, song)
+        // }
     }
 
     json.NewEncoder(response).Encode(songs)
-
-    fmt.Println("Songs retrieved successfully!")
 }
 

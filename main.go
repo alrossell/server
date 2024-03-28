@@ -40,11 +40,16 @@ func main() {
 
     apiRouter.HandleFunc("/songs", api.CreateSong).Methods("POST", "OPTIONS") // Include OPTIONS to handle preflight requests
     apiRouter.HandleFunc("/songs", api.GetSongs).Methods("GET", "OPTIONS")    // Include OPTIONS to handle preflight requests
+    apiRouter.HandleFunc("/songs/{id}", api.GetSong).Methods("GET", "OPTIONS")    // Include OPTIONS to handle preflight requests
     apiRouter.HandleFunc("/songs/{id}", api.DeleteSong).Methods("DELETE", "OPTIONS") // Include OPTIONS to handle preflight requests
     apiRouter.HandleFunc("/songs", api.DeleteAllSongs).Methods("DELETE", "OPTIONS") // Include OPTIONS to handle preflight requests
     apiRouter.HandleFunc("/songs", api.DeleteAllSongs).Methods("DELETE", "OPTIONS") // Include OPTIONS to handle preflight requests
    
-    apiRouter.HandleFunc("/songs", api.GetSearchResults).Methods("GET", "OPTIONS")    // Include OPTIONS to handle preflight requests
+    apiRouter.HandleFunc("/search", api.GetSearchResults).Methods("GET", "OPTIONS")    // Include OPTIONS to handle preflight requests
+
+    apiRouter.HandleFunc("/reviews", api.GetReviews).Methods("GET", "OPTIONS")    // Include OPTIONS to handle preflight requests
+    apiRouter.HandleFunc("/reviews/{id}", api.GetReview).Methods("GET", "OPTIONS")    // Include OPTIONS to handle preflight requests
+    apiRouter.HandleFunc("/reviews", api.PostReview).Methods("POST", "OPTIONS")    // Include OPTIONS to handle preflight requests
 
     http.ListenAndServe(":5000", router)
 }
