@@ -59,7 +59,7 @@ func PostReview(response http.ResponseWriter, request *http.Request) {
     fmt.Println(review)
 
     _, err := client.Exec(
-        `INSERT INTO reviews (user_id, review_id, date, review) 
+        `INSERT INTO reviews (user_id, song_id, date, review) 
          VALUES ($1, $2, $3, $4)`,
         review.UserId, review.SongId, review.Date, review.Review)
 

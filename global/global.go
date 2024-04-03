@@ -25,6 +25,15 @@ type Song struct {
     DurationSeconds int `json:"duration_seconds"`
 }
 
+type User struct {
+    Id int `json:"id"`
+    FirstName string `json:"first_name"`
+    LastName string `json:"last_name"`
+    UserName string `json:"user_name"`
+    Date string `json:"date"`
+    Password string `json:"password"`
+}
+
 type Test struct {
     id, releaseYear, durationSeconds int
     title, artist, album, genre string

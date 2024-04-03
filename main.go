@@ -12,7 +12,7 @@ import (
 
 func corsMiddleware(next http.Handler) http.Handler {
     return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-        w.Header().Set("Access-Control-Allow-Origin", "http://localhost:8081") // Allow all origins
+        w.Header().Set("Access-Control-Allow-Origin", "http://localhost:8080") // Allow all origins
         w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE") // Allowed methods
         w.Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization") // Allowed headers
 
@@ -50,6 +50,10 @@ func main() {
     apiRouter.HandleFunc("/reviews", api.GetReviews).Methods("GET", "OPTIONS")    // Include OPTIONS to handle preflight requests
     apiRouter.HandleFunc("/reviews/{id}", api.GetReview).Methods("GET", "OPTIONS")    // Include OPTIONS to handle preflight requests
     apiRouter.HandleFunc("/reviews", api.PostReview).Methods("POST", "OPTIONS")    // Include OPTIONS to handle preflight requests
+
+    apiRouter.HandleFunc("/users", api.GetUsers).Methods("GET", "OPTIONS")    // Include OPTIONS to handle preflight requests
+    apiRouter.HandleFunc("/users/{id}", api.GetUser).Methods("GET", "OPTIONS")    // Include OPTIONS to handle preflight requests
+    apiRouter.HandleFunc("/users", api.PostUser).Methods("POST", "OPTIONS")    // Include OPTIONS to handle preflight requests
 
     http.ListenAndServe(":5000", router)
 }
