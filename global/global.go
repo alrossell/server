@@ -29,7 +29,7 @@ type User struct {
     Id int `json:"id"`
     FirstName string `json:"first_name"`
     LastName string `json:"last_name"`
-    UserName string `json:"user_name"`
+    Email string `json:"email"`
     Date string `json:"date"`
     Password string `json:"password"`
 }
